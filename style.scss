@@ -1,0 +1,87 @@
+// Variables
+$primary: #4f46e5;
+$bg-light: #f8fafc;
+$text-dark: #1e293b;
+$border-color: #e2e8f0;
+
+// Global
+body {
+    background: $bg-light;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+// Page wrapper
+.user-page {
+    padding: 40px 0;
+}
+
+// Card container
+.user-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+// Title
+.title {
+    font-weight: 600;
+    color: $text-dark;
+}
+
+// Table styling
+.custom-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+
+    thead {
+        background: transparent;
+
+        th {
+            border: none;
+            font-weight: 600;
+            color: #64748b;
+        }
+    }
+
+    tbody {
+        tr {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            }
+
+            td {
+                border: none;
+                padding: 15px;
+                vertical-align: middle;
+
+                &:first-child {
+                    border-radius: 8px 0 0 8px;
+                    font-weight: 500;
+                }
+
+                &:last-child {
+                    border-radius: 0 8px 8px 0;
+                }   
+            }
+        }
+    }
+}
+
+// Button override
+.btn-primary {
+    background: $primary;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    &:hover {
+        background: darken($primary, 8%);
+    }
+}

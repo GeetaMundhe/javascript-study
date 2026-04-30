@@ -19,6 +19,9 @@
         <input type="text" id="email" class="form-control mb-2" placeholder="Email" required>
          <small id="emailError" class="text-danger"></small>
 
+         <input type="number" id="mobile" class="form-control mb-2" placeholder="Mobile No" required>
+         <small id="mobileError" class="text-danger"></small>
+
         <input type="password" id="password" class="form-control mb-2" placeholder="password" required>
          <small id="passwordError" class="text-danger"></small>
 
@@ -37,16 +40,17 @@
 
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
     let password = document.getElementById("password").value.trim();
 
     let isValid = true;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !mobile) {
         alert("All fields required");
         return;
     }
 
-    let newUser = { name, email, password };
+    let newUser = { name, email, mobile, password };
 
     fetch("save-user.php", {
         method: "POST",
