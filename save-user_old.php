@@ -10,13 +10,7 @@ if (!file_exists($file)) {
 
 $users = json_decode(file_get_contents($file), true);
 
-// Prevent duplicate email
-foreach ($users as $user) {
-    if ($user['email'] === $data['email']) {
-        echo json_encode(["status" => "error", "message" => "Email already exists"]);
-        exit;
-    }
-}
+
 
 $users[] = $data;
 

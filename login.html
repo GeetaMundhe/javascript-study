@@ -16,11 +16,12 @@
         <button onclick="login()" class="btn btn-primary">Login</button>
     </div>
     <script>
+        
     function login() {
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
 
-        fetch("login.php", {
+        fetch("api.php?action=login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
