@@ -53,22 +53,53 @@ switch($action){
 // SAVE USER
 function saveUser($users, $data, $file){
 
-    // Auto ID
+    foreach($users as $user){
+
+        if($user['email'] === $data['email']){
+
+            echo json_encode([
+                "status" => "error",
+                "message" => "Email already exists"
+            ]);
+
+            return;
+        }
+    }
+
     $data['id'] = count($users) + 1;
+
+    // HASH PASSWORD
+    $data['password'] = password_hash(
+        $data['password'],
+        PASSWORD_DEFAULT
+    );
 
     $users[] = $data;
 
-    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
+    file_put_contents(
+        $file,
+        json_encode($users, JSON_PRETTY_PRINT)
+    );
 
-    echo json_encode(["status" => "success"]);
+    echo json_encode([
+        "status" => "success"
+    ]);
 }
 
 // LOGIN
 function loginUser($users, $data){
 
     foreach($users as $user){
-        if($user['email'] === $data['email'] && $user['password'] === $data['password']){
-            echo json_encode(["status" => "success"]);
+
+        if(
+            $user['email'] === $data['email'] &&
+            password_verify($data['password'], $user['password'])
+        ){
+
+            echo json_encode([
+                "status" => "success"
+            ]);
+
             return;
         }
     }

@@ -45,6 +45,23 @@
 
     let isValid = true;
 
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailPattern.test(email)){
+        alert("Invalid email");
+        return;
+    }
+
+    if(mobile.length !== 10){
+        alert("Mobile must be 10 digits");
+        return;
+    }
+
+    if(password.length < 6){
+        alert("Password too short");
+        return;
+    }
+
     if (!name || !email || !password || !mobile) {
         alert("All fields required");
         return;
