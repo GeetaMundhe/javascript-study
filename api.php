@@ -6,7 +6,7 @@ $file = "users.json";
 // Create file if not exists
 if (!file_exists($file)) {
     file_put_contents($file, json_encode([]));
-}
+} 
 
 // Get request type
 $action = $_GET['action'] ?? '';
