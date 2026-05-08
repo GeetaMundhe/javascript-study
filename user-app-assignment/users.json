@@ -1,0 +1,51 @@
+[
+    {
+        "name": "geetaNagargoje",
+        "email": "geeta@test.com",
+        "mobile": "9922966020",
+        "password": "123456.",
+        "id": 1
+    },
+    {
+        "name": "vrunda jinlamdar",
+        "email": "vrunda@test.com",
+        "mobile": "9922966020123456",
+        "password": "123456",
+        "id": 2
+    },
+    {
+        "name": "Geeta Mundhe",
+        "email": "12",
+        "mobile": "9922966020",
+        "password": "$2y$10$81Ao5flLIxza4nNInPQrK.UwGX4lukLm4KD.qn8mBISf3SS9ylvV2",
+        "id": 3
+    },
+    {
+        "name": "geeta",
+        "email": "12@test.co",
+        "mobile": "1234567896",
+        "password": "$2y$10$TvXrfPamPtM01MaLHuptTOUmjazBJqPhwlLxoI4NtVp0hreyltfNC",
+        "id": 4
+    },
+    {
+        "name": "geeta",
+        "email": "12@test.co",
+        "mobile": "1234567896",
+        "password": "$2y$10$HgyAxac6H7\/yxa.Yad5nuOI.8tfDRqGgDumHx2WqAhD6SkBT5afoq",
+        "id": 5
+    },
+    {
+        "name": "geeta",
+        "email": "12@test.co",
+        "mobile": "1234567896",
+        "password": "$2y$10$U.I5okGqrwkgkxsU0P.6v.ikvkv0SG8JriI9Bqpa9Euqg9Kolaxxa",
+        "id": 6
+    },
+    {
+        "name": "geeta1",
+        "email": "geeta1@test.com",
+        "mobile": "9922966020",
+        "password": "$2y$10$bQl6hGvBj1uqFQHJ.3gn0OxWktJFgc9Qq7driRdBcy.M.KNiRzdSS",
+        "id": 7
+    }
+]
