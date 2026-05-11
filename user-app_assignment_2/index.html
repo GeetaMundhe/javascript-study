@@ -69,7 +69,7 @@
 
     let newUser = { name, email, mobile, password };
 
-    fetch("api.php?action=saveUser", {
+    fetch("api/api.php?action=saveUser", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

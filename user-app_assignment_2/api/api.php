@@ -41,6 +41,10 @@ switch($action){
     updateUser($users, $data, $file);
     break;
 
+    case 'searchUser':
+    searchUser($users);
+    break;
+
     default:
         echo json_encode([
             "status" => "error",
@@ -147,6 +151,27 @@ function updateUser($users, $data, $file){
     file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
 
     echo json_encode(["success" => true]);
+}
+
+
+function searchUser($users){
+
+    $query = strtolower($_GET['query'] ?? '');
+
+    $filteredUsers = [];
+
+    foreach($users as $user){
+
+        if(
+            strpos(strtolower($user['name']), $query) !== false ||
+            strpos(strtolower($user['email']), $query) !== false ||
+            strpos(strtolower($user['mobile']), $query) !== false
+        ){
+            $filteredUsers[] = $user;
+        }
+    }
+
+    echo json_encode($filteredUsers);
 }
 
 ?>

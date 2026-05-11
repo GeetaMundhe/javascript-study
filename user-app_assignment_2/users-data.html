@@ -15,8 +15,8 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2 class="title">Users Details</h2>
                 <a href="login.html" class="btn btn-primary">Back</a>
-                <a>Search here</a>
-                <a href="#">search</a>
+                <input type="text" placeholder="Search here" id="searchInput" class="form-control w-75"> 
+             
             </div>
 
             <div class="table-responsive">
@@ -40,7 +40,7 @@
 </div>
 
 <script>
-fetch("api.php?action=getUsers")
+fetch("api/api.php?action=getUsers")
 
 .then(res => res.json())
 .then(users => {
@@ -71,7 +71,7 @@ document.addEventListener("click", function(e) {
     if (e.target.classList.contains("delete-btn")) {
     let userId = e.target.getAttribute("data-id");
 
-    fetch("api.php?action=deleteUser", {
+    fetch("api/api.php?action=deleteUser", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -121,7 +121,7 @@ document.addEventListener("click", function(e) {
         let email = inputs[1].value;
         let mobile = inputs[2].value;
 
-        fetch("api.php?action=updateUser", {
+        fetch("api/api.php?action=updateUser", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -150,6 +150,83 @@ document.addEventListener("click", function(e) {
         });
     }
 
+
+});
+
+function highlightText(text, searchValue){
+
+    if(!searchValue) return text;
+
+    let regex = new RegExp(`(${searchValue})`, "gi");
+
+    return text.replace(regex, `<mark>$1</mark>`);
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function(){
+
+    let searchValue = this.value;
+
+    fetch(`api/api.php?action=searchUser&query=${searchValue}`)
+    .then(res => {
+
+        if(!res.ok){
+            throw new Error("API not found");
+        }
+
+        return res.json();
+    })
+    .then(users => {
+
+        let tbody = document.querySelector("#userTable tbody");
+
+        tbody.innerHTML = "";
+
+        if(users.length === 0){
+
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="text-center">
+                        No Users Found
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+        users.forEach(user => {
+
+            let row = `
+                <tr>
+                    <td>${highlightText(user.name, searchValue)}</td>
+                    <td>${user.email}</td>
+                    <td>${user.mobile}</td>
+
+                    <td>
+                        <button 
+                            data-id="${user.id}"
+                            class="btn btn-warning edit-btn">
+                            Edit
+                        </button>
+                    </td>
+
+                    <td>
+                        <button 
+                            data-id="${user.id}"
+                            class="btn btn-danger delete-btn">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            `;
+
+            tbody.innerHTML += row;
+        });
+
+    })
+    .catch(err => {
+        console.error("Search Error:", err);
+    });
 
 });
 
